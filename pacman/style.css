@@ -1,0 +1,201 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h2{
+    margin:20px 0px;
+}
+
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    height:560px;
+    width:560px;
+    border:1px solid black;
+    /* background-color: rgba(0,0,0,.7); */
+}
+
+.grid div{
+    height:20px;
+    width:20px;
+}
+
+.grid .pac-dots{
+    background-image: radial-gradient(50% 50%,
+                                      rgb(166, 224, 166) 0%,
+                                      rgb(51, 136, 51) 70% ,
+                                      green 100%);
+    border:6px solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    /* background: whitesmoke; */
+}
+.grid .wall{
+    background-image: radial-gradient(40% 40%,
+                                      rgb(208, 208, 243),
+                                      blue)   ;
+    /* border:1px solid rgb(4, 4, 77); */
+    box-shadow: inset 0 0 5px rgba(0,0,0,.7);
+    box-sizing: border-box;
+}
+.grid .ghost-lair{
+    /* background-color: rgb(243, 236, 236); */
+}
+.grid .power-pellet{
+    background-image: radial-gradient(50% 50%,
+                                      rgb(166, 224, 166),
+                                      green  );
+    border-radius: 50%;
+}
+.grid .empty{
+
+}
+.grid .ghost{
+    position: relative;
+}
+.grid .ghost::after{
+    position: absolute;
+    content:'';
+    top:5px;
+    left:3px;
+    height:9px;
+    width:7px;
+    border-radius: 50%;
+    background-image: radial-gradient(75% 75%,
+                                      #000 40%,
+                                      #fff 40%,
+                                      #fff 100%);
+    z-index:1;
+    animation:movingEyes .6s linear infinite;
+}
+.grid .pac-man{
+    background: yellow;
+    border-radius: 50%;
+    /* clip-path: polygon(100% 74%, 44% 48%, 100% 21%); */
+    /* -webkit-clip-path: polygon(0 0, 200px 0, 200px -50px, 66.6666666667px 100px, 200px 250px, 200px 200px, 0 200px); */
+    clip-path: polygon(0 0, 20px 0, 20px -5px, 6.66666666667px 10px, 20px 25px, 20px 20px, 0 20px);
+    /* transform: rotate(90deg); */
+    animation:eat linear infinite .6s;
+}
+.grid .ghost::before{
+    position: absolute;
+    content:'';
+    top:5px;
+    right:3px;
+    height:9px;
+    width:7px;
+    border-radius: 50%;
+    background-image: radial-gradient(75% 75%,
+                                      #000 40%,
+                                      #fff 40%,
+                                      #fff 100%);
+    z-index:1;
+    animation:movingEyes .6s linear infinite;
+}
+.grid .inky{
+    border:none;
+    border-radius:0;
+    background-image: -webkit-linear-gradient(45deg,transparent 50%, cyan 50%),
+                      -webkit-linear-gradient(135deg, transparent 50%, cyan 50%),
+                      -webkit-linear-gradient(cyan, cyan),
+                      -webkit-radial-gradient(56% 60%, circle, transparent 30%, cyan 30%),
+                      -webkit-radial-gradient(44% 60%, circle, transparent 30%, cyan 30%);
+    background-position: 100% 100%, 100% 100%, 50% 75%, 5% 0, 95% 0;
+    background-repeat: repeat-x, repeat-x, repeat-x, no-repeat, no-repeat;
+    background-size: 3.3333px 3.3333px, 
+                     3.3333px 3.3333px, 
+                     15px 15px, 
+                     15px 15px, 
+                     15px 15px;
+    border-radius: 100% 100% 0 0;
+    animation: movingGhost 1s linear infinite;
+}
+
+.grid .pinky{
+    border:none;
+    border-radius:0;
+    background-image: -webkit-linear-gradient(45deg,transparent 50%, pink 50%),
+                      -webkit-linear-gradient(135deg, transparent 50%, pink 50%),
+                      -webkit-linear-gradient(pink, pink),
+                      -webkit-radial-gradient(56% 60%, circle, transparent 30%, pink 30%),
+                      -webkit-radial-gradient(44% 60%, circle, transparent 30%, pink 30%);
+    background-position: 100% 100%, 100% 100%, 50% 75%, 5% 0, 95% 0;
+    background-repeat: repeat-x, repeat-x, repeat-x, no-repeat, no-repeat;
+    background-size: 3.3333px 3.3333px, 
+                     3.3333px 3.3333px, 
+                     15px 15px, 
+                     15px 15px, 
+                     15px 15px;
+    border-radius: 100% 100% 0 0;
+    animation: movingGhost 1s linear infinite;
+}
+.grid .blinky{
+    border:none;
+    border-radius:0;
+    background-image: -webkit-linear-gradient(45deg,transparent 50%, red 50%),
+                      -webkit-linear-gradient(135deg, transparent 50%, red 50%),
+                      -webkit-linear-gradient(red, red),
+                      -webkit-radial-gradient(56% 60%, circle, transparent 30%, red 30%),
+                      -webkit-radial-gradient(44% 60%, circle, transparent 30%, red 30%);
+    background-position: 100% 100%, 100% 100%, 50% 75%, 5% 0, 95% 0;
+    background-repeat: repeat-x, repeat-x, repeat-x, no-repeat, no-repeat;
+    background-size: 3.3333px 3.3333px, 
+                     3.3333px 3.3333px, 
+                     15px 15px, 
+                     15px 15px, 
+                     15px 15px;
+    border-radius: 100% 100% 0 0;
+    animation: movingGhost 1s linear infinite;
+}
+.grid .clyde{
+    border:none;
+    border-radius:0;
+    background-image: -webkit-linear-gradient(45deg,transparent 50%, orange 50%),
+                      -webkit-linear-gradient(135deg, transparent 50%, orange 50%),
+                      -webkit-linear-gradient(orange, orange),
+                      -webkit-radial-gradient(56% 60%, circle, transparent 30%, orange 30%),
+                      -webkit-radial-gradient(44% 60%, circle, transparent 30%, orange 30%);
+    background-position: 100% 100%, 100% 100%, 50% 75%, 5% 0, 95% 0;
+    background-repeat: repeat-x, repeat-x, repeat-x, no-repeat, no-repeat;
+    background-size: 3.3333px 3.3333px, 
+                     3.3333px 3.3333px, 
+                     15px 15px, 
+                     15px 15px, 
+                     15px 15px;
+    border-radius: 100% 100% 0 0;
+    animation: movingGhost 1s linear infinite;
+}
+.grid .scared-ghost{
+    background-image: -webkit-linear-gradient(45deg,transparent 50%, aquamarine 50%),
+                      -webkit-linear-gradient(135deg, transparent 50%, aquamarine 50%),
+                      -webkit-linear-gradient(aquamarine, aquamarine),
+                      -webkit-radial-gradient(56% 60%, circle, transparent 30%, aquamarine 30%),
+                      -webkit-radial-gradient(44% 60%, circle, transparent 30%, aquamarine 30%);
+}
+
+@keyframes movingGhost {
+    100% { background-position: 0 100%, 0 100%, 50% 75%, 5% 0, 95% 0; }
+}
+@keyframes eat{
+    50% {
+        /* polygon(0 0, 20px 0, 20px -5px, 6.66666666667px 10px, 20px 25px, 20px 20px, 0 20px); */
+        clip-path: polygon(0 0, 20px 0, 20px 10px, 6.66666666667px 10px, 20px 10px, 20px 20px, 0 20px);
+      }
+  }
+@keyframes movingEyes{
+    100%{
+        background-image: radial-gradient(50% 50%,
+                                      #000 40%,
+                                      #fff 40%,
+                                      #fff 100%);
+    }
+}
+
